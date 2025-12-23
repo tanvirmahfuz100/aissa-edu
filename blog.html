@@ -223,8 +223,9 @@
     <script>
         function loadBlog() {
             try {
-                const posts = BLOG_DATA;
+                const posts = typeof BLOG_DATA !== 'undefined' ? BLOG_DATA : [];
                 const list = document.getElementById('blog-list');
+                if (!list) return;
                 list.innerHTML = '';
 
                 if (posts.length === 0) {
@@ -248,11 +249,13 @@
                 });
             } catch (err) {
                 console.error('Error loading blog:', err);
-                document.getElementById('blog-list').innerHTML = '<p style="text-align: center; color: red;">Error loading blog.</p>';
+                const list = document.getElementById('blog-list');
+                if (list) list.innerHTML = '<p style="text-align: center; color: red;">Error loading blog.</p>';
             }
         }
 
         loadBlog();
+        document.addEventListener('DOMContentLoaded', loadBlog);
     </script>
 </body>
 

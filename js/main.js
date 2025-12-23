@@ -142,7 +142,12 @@ class PodcastManager {
         this.playlist = [];
         this.currentIndex = -1;
         this.isPlaying = false;
-        this.progress = JSON.parse(localStorage.getItem('podcast_progress')) || {};
+        try {
+            this.progress = JSON.parse(localStorage.getItem('podcast_progress')) || {};
+        } catch (e) {
+            console.warn('Podcast progress access failed:', e);
+            this.progress = {};
+        }
 
         this.initListeners();
     }
@@ -192,15 +197,19 @@ class PodcastManager {
         this.audio.src = pod.audioUrl;
 
         // UI Updates
-        document.getElementById('pod-player-cover').src = pod.coverImage;
-        document.getElementById('pod-player-title').textContent = pod.title;
-        document.getElementById('podcast-player-bar').classList.add('active');
+        const cover = document.getElementById('pod-player-cover');
+        const title = document.getElementById('pod-player-title');
+        const bar = document.getElementById('podcast-player-bar');
+
+        if (cover) cover.src = pod.coverImage;
+        if (title) title.textContent = pod.title;
+        if (bar) bar.classList.add('active');
 
         if (resume && this.progress[id]) {
             this.audio.currentTime = this.progress[id];
         }
 
-        this.audio.play();
+        this.audio.play().catch(e => console.warn('Playback failed:', e));
     }
 
     toggle() {
@@ -249,23 +258,25 @@ class PodcastManager {
     }
 
     updateUI() {
+        if (!this.audio.duration) return;
+
         const progressFill = document.getElementById('pod-progress-fill');
         const currentTimeEl = document.getElementById('pod-current-time');
         const totalTimeEl = document.getElementById('pod-total-time');
 
-        if (this.audio.duration) {
-            const percent = (this.audio.currentTime / this.audio.duration) * 100;
-            progressFill.style.width = `${percent}%`;
+        const percent = (this.audio.currentTime / this.audio.duration) * 100;
+        if (progressFill) progressFill.style.width = `${percent}%`;
 
-            currentTimeEl.textContent = this.formatTime(this.audio.currentTime);
-            totalTimeEl.textContent = this.formatTime(this.audio.duration);
+        if (currentTimeEl) currentTimeEl.textContent = this.formatTime(this.audio.currentTime);
+        if (totalTimeEl) totalTimeEl.textContent = this.formatTime(this.audio.duration);
 
-            // Save progress
-            const currentPod = this.playlist[this.currentIndex];
-            if (currentPod) {
-                this.progress[currentPod.id] = this.audio.currentTime;
+        // Save progress
+        const currentPod = this.playlist[this.currentIndex];
+        if (currentPod) {
+            this.progress[currentPod.id] = this.audio.currentTime;
+            try {
                 localStorage.setItem('podcast_progress', JSON.stringify(this.progress));
-            }
+            } catch (e) { }
         }
     }
 

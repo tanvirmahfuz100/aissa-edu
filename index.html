@@ -347,11 +347,11 @@
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', async () => {
+        async function initPageIndex() {
             // Headlines Ticker Logic
-            const notices = NOTICES_DATA;
+            const notices = typeof NOTICES_DATA !== 'undefined' ? NOTICES_DATA : [];
             const container = document.getElementById('headlines-ticker');
-            if (notices && notices.length > 0) {
+            if (container && notices.length > 0) {
                 container.innerHTML = notices.map((notice, index) => {
                     const title = typeof notice === 'string' ? notice : notice.title;
                     return `
@@ -365,54 +365,62 @@
 
             window.showNoticeDetail = (index) => {
                 const notice = NOTICES_DATA[index];
+                if (!notice) return;
                 const title = typeof notice === 'string' ? notice : notice.title;
                 const content = typeof notice === 'object' ? notice.content : '(No additional details available)';
 
                 // Use a modal to show details
                 const modal = document.getElementById('notice-detail-modal');
-                document.getElementById('notice-modal-title').innerText = title;
-                document.getElementById('notice-modal-content').innerText = content;
-                modal.classList.add('active');
+                if (modal) {
+                    document.getElementById('notice-modal-title').innerText = title;
+                    document.getElementById('notice-modal-content').innerText = content;
+                    modal.classList.add('active');
+                }
             };
 
             window.closeNoticeModal = () => {
-                document.getElementById('notice-detail-modal').classList.remove('active');
+                const modal = document.getElementById('notice-detail-modal');
+                if (modal) modal.classList.remove('active');
             };
 
             // Load Featured Content
-            const data = FEATURED_DATA;
+            const fData = typeof FEATURED_DATA !== 'undefined' ? FEATURED_DATA : null;
             const featuredContainer = document.getElementById('featured-content-dynamic');
-            if (data) {
+            if (featuredContainer && fData) {
                 featuredContainer.innerHTML = `
-                    <h4 style="margin-bottom: var(--space-2);">${data.title}</h4>
-                    <p style="color: var(--text-secondary); margin-bottom: var(--space-4);">${data.description}</p>
-                    <a href="${data.ctaLink || 'publications.html'}" class="btn btn-primary">${data.cta || 'Explore Research'}</a>
+                    <h4 style="margin-bottom: var(--space-2);">${fData.title}</h4>
+                    <p style="color: var(--text-secondary); margin-bottom: var(--space-4);">${fData.description}</p>
+                    <a href="${fData.ctaLink || 'publications.html'}" class="btn btn-primary">${fData.cta || 'Explore Research'}</a>
                 `;
             }
 
             // Load Reading History
-            const history = historyManager.getRecent(3);
-            if (history.length > 0) {
-                document.getElementById('continue-reading-section').style.display = 'block';
-                const historyList = document.getElementById('reading-history-list');
-                historyList.innerHTML = history.map(item => `
-                    <div class="issue-item" onclick="window.location.href='${item.link}'">
-                        <div class="issue-status" style="background: var(--text-secondary);"></div>
-                        <div class="issue-title">${item.title}</div>
-                        <div class="issue-meta">
-                            <span class="tag" style="text-transform: capitalize;">${item.type}</span>
-                        </div>
-                    </div>
-                `).join('');
+            if (typeof historyManager !== 'undefined') {
+                const history = historyManager.getRecent(3);
+                if (history.length > 0) {
+                    const section = document.getElementById('continue-reading-section');
+                    if (section) section.style.display = 'block';
+                    const historyList = document.getElementById('reading-history-list');
+                    if (historyList) {
+                        historyList.innerHTML = history.map(item => `
+                            <div class="issue-item" onclick="window.location.href='${item.link}'">
+                                <div class="issue-status" style="background: var(--text-secondary);"></div>
+                                <div class="issue-title">${item.title}</div>
+                                <div class="issue-meta">
+                                    <span class="tag" style="text-transform: capitalize;">${item.type}</span>
+                                </div>
+                            </div>
+                        `).join('');
+                    }
+                }
             }
 
             // Load Random Publications
-            const pubs = PUBLICATIONS_DATA;
-            if (pubs && pubs.length > 0) {
-                const grid = document.getElementById('pub-home-grid');
-                const selected = pubs.sort(() => 0.5 - Math.random()).slice(0, 3);
-
-                grid.innerHTML = selected.map(pub => `
+            const pubs = typeof PUBLICATIONS_DATA !== 'undefined' ? PUBLICATIONS_DATA : [];
+            const pubGrid = document.getElementById('pub-home-grid');
+            if (pubGrid && pubs.length > 0) {
+                const selected = [...pubs].sort(() => 0.5 - Math.random()).slice(0, 3);
+                pubGrid.innerHTML = selected.map(pub => `
                     <div class="issue-item" onclick="window.location.href='read_publication.html?id=${pub.id}'">
                         <div class="issue-title">${pub.title}</div>
                         <div class="issue-meta">
@@ -428,9 +436,9 @@
                 const podcasts = await res.json();
 
                 // Featured (3 random)
-                if (podcasts.length > 0) {
-                    const featuredList = document.getElementById('featured-podcasts-list');
-                    const selected = podcasts.sort(() => 0.5 - Math.random()).slice(0, 3);
+                const featuredList = document.getElementById('featured-podcasts-list');
+                if (featuredList && podcasts.length > 0) {
+                    const selected = [...podcasts].sort(() => 0.5 - Math.random()).slice(0, 3);
                     featuredList.innerHTML = selected.map(pod => `
                         <div class="issue-item" onclick="podcastManager.play('${pod.id}')">
                             <div class="issue-status" style="background: var(--accent);"></div>
@@ -443,27 +451,37 @@
                 }
 
                 // Continue Listening
-                const progress = JSON.parse(localStorage.getItem('podcast_progress')) || {};
-                const continueList = document.getElementById('listening-history-list');
-                const partiallyHeard = Object.keys(progress)
-                    .map(id => podcasts.find(p => p.id === id))
-                    .filter(p => p) // Remove nulls if podcast deleted
-                    .slice(0, 3);
+                try {
+                    const progress = JSON.parse(localStorage.getItem('podcast_progress')) || {};
+                    const partiallyHeard = Object.keys(progress)
+                        .map(id => podcasts.find(p => p.id === id))
+                        .filter(p => p)
+                        .slice(0, 3);
 
-                if (partiallyHeard.length > 0) {
-                    document.getElementById('continue-listening-section').style.display = 'block';
-                    continueList.innerHTML = partiallyHeard.map(pod => `
-                        <div class="issue-item" onclick="podcastManager.play('${pod.id}')">
-                            <div class="issue-status" style="background: var(--accent);"></div>
-                            <div class="issue-title">${pod.title}</div>
-                            <div class="issue-meta">
-                                <span class="tag">Resume</span>
-                            </div>
-                        </div>
-                    `).join('');
-                }
+                    if (partiallyHeard.length > 0) {
+                        const cListenSection = document.getElementById('continue-listening-section');
+                        if (cListenSection) cListenSection.style.display = 'block';
+                        const continueList = document.getElementById('listening-history-list');
+                        if (continueList) {
+                            continueList.innerHTML = partiallyHeard.map(pod => `
+                                <div class="issue-item" onclick="podcastManager.play('${pod.id}')">
+                                    <div class="issue-status" style="background: var(--accent);"></div>
+                                    <div class="issue-title">${pod.title}</div>
+                                    <div class="issue-meta">
+                                        <span class="tag">Resume</span>
+                                    </div>
+                                </div>
+                            `).join('');
+                        }
+                    }
+                } catch (e) { }
             } catch (e) { console.error('Error loading podcasts for home:', e); }
-        });
+        }
+
+        // Run immediately
+        initPageIndex();
+        // Support soft navigation
+        document.addEventListener('DOMContentLoaded', initPageIndex);
 
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {

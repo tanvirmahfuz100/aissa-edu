@@ -343,11 +343,13 @@
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', async () => {
+        async function initPodcastPage() {
             const container = document.getElementById('podcasts-container');
+            if (!container) return;
 
             try {
                 const res = await fetch('json/podcasts.json');
+                if (!res.ok) throw new Error('Fetch failed');
                 const podcasts = await res.json();
 
                 // Sort latest to oldest
@@ -387,9 +389,13 @@
 
             } catch (err) {
                 console.error('Error loading podcasts:', err);
-                container.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--danger);">Error loading podcasts.</p>';
+                const container = document.getElementById('podcasts-container');
+                if (container) container.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--danger);">Error loading podcasts.</p>';
             }
-        });
+        }
+
+        initPodcastPage();
+        document.addEventListener('DOMContentLoaded', initPodcastPage);
     </script>
 </body>
 

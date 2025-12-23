@@ -88,7 +88,7 @@
         let program = '';
         let semester = '';
 
-        document.addEventListener('DOMContentLoaded', async () => {
+        async function initReadQuestionPage() {
             const urlParams = new URLSearchParams(window.location.search);
             courseCode = urlParams.get('course_code');
             program = urlParams.get('program');
@@ -97,9 +97,13 @@
             if (courseCode) {
                 await loadQuestions();
             } else {
-                document.getElementById('questions-container').innerHTML = '<p style="text-align: center; padding: 2rem;">No course selected.</p>';
+                const container = document.getElementById('questions-container');
+                if (container) container.innerHTML = '<p style="text-align: center; padding: 2rem;">No course selected.</p>';
             }
-        });
+        }
+
+        initReadQuestionPage();
+        document.addEventListener('DOMContentLoaded', initReadQuestionPage);
 
         async function loadQuestions() {
             try {

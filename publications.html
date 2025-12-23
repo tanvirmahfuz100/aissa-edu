@@ -221,8 +221,9 @@
     <script>
         function loadPublications() {
             try {
-                const publications = PUBLICATIONS_DATA;
+                const publications = typeof PUBLICATIONS_DATA !== 'undefined' ? PUBLICATIONS_DATA : [];
                 const list = document.getElementById('pub-list');
+                if (!list) return;
                 list.innerHTML = '';
 
                 if (publications.length === 0) {
@@ -246,11 +247,13 @@
                 });
             } catch (err) {
                 console.error('Error loading publications:', err);
-                document.getElementById('pub-list').innerHTML = '<p style="text-align: center; color: red;">Error loading publications.</p>';
+                const list = document.getElementById('pub-list');
+                if (list) list.innerHTML = '<p style="text-align: center; color: red;">Error loading publications.</p>';
             }
         }
 
         loadPublications();
+        document.addEventListener('DOMContentLoaded', loadPublications);
     </script>
 </body>
 

@@ -1,14 +1,21 @@
-const CACHE_NAME = 'aissa-edu-v1';
+const CACHE_NAME = 'aissa-edu-v1.1';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
+    './about.html',
+    './contact.html',
+    './course_materials.html',
+    './publications.html',
+    './blog.html',
+    './podcast.html',
+    './question_bank.html',
     './css/style.css',
     './js/main.js',
-    './assets/images/logo.png',
-    './icons/course_materials.png',
-    './icons/question_bank.png',
-    './icons/gpa_calculator.png',
-    './icons/blog.png'
+    './js/data.js',
+    './js/question_data.js',
+    './json/podcasts.json',
+    './json/resources.json',
+    './assets/images/logo.png'
 ];
 
 self.addEventListener('install', (event) => {
@@ -34,10 +41,23 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-    // Network First strategy
+    // Stale-while-revalidate strategy
     event.respondWith(
-        fetch(event.request).catch(() => {
-            return caches.match(event.request);
+        caches.match(event.request).then((cachedResponse) => {
+            const fetchPromise = fetch(event.request).then((networkResponse) => {
+                if (networkResponse && networkResponse.status === 200 && networkResponse.type === 'basic') {
+                    const responseToCache = networkResponse.clone();
+                    caches.open(CACHE_NAME).then((cache) => {
+                        cache.put(event.request, responseToCache);
+                    });
+                }
+                return networkResponse;
+            }).catch(() => {
+                // Return cached response if original fetch fails
+                return cachedResponse;
+            });
+
+            return cachedResponse || fetchPromise;
         })
     );
 });
