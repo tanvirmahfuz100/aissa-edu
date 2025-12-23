@@ -108,7 +108,6 @@
 
                 if (curriculum[program]) {
                     const progData = curriculum[program];
-                    // semester is "1st", keys are "1"
                     const semNum = semester ? semester.replace(/\D/g, '') : '';
 
                     if (progData.years) {
@@ -124,10 +123,19 @@
                 document.getElementById('exam-title').textContent = courseTitle;
                 document.getElementById('exam-meta').textContent = `${program} Semester ${semester} | ${courseCode}`;
 
-                if (QUESTIONS_DATA && QUESTIONS_DATA[courseCode]) {
-                    allQuestions = QUESTIONS_DATA[courseCode];
+                // Fetch from json/questions/{courseCode}.json
+                const res = await fetch(`json/questions/${courseCode}.json`);
+                if (!res.ok) throw new Error('Failed to fetch questions');
+
+                allQuestions = await res.json();
+
+                if (allQuestions.length > 0) {
                     const sessions = [...new Set(allQuestions.map(q => q.session))].sort().reverse();
                     const filter = document.getElementById('session-filter');
+
+                    // Clear existing except "All"
+                    filter.innerHTML = '<option value="all">All Sessions</option>';
+
                     sessions.forEach(s => {
                         const opt = document.createElement('option');
                         opt.value = s;
@@ -140,7 +148,12 @@
                 }
             } catch (err) {
                 console.error('Error loading questions:', err);
-                document.getElementById('questions-container').innerHTML = '<p style="text-align: center; color: red; padding: 2rem;">Error loading questions.</p>';
+                // Fallback to empty state
+                document.getElementById('questions-container').innerHTML = `
+                    <div style="text-align: center; padding: 3rem; border: 1px dashed var(--border); border-radius: var(--radius-lg);">
+                        <p style="color: var(--text-tertiary);">No questions have been uploaded for this course yet.</p>
+                        <p style="font-size: 13px; color: var(--text-tertiary); margin-top: 8px;">Check back later for updates.</p>
+                    </div>`;
             }
         }
 

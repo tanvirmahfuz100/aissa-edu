@@ -168,7 +168,8 @@ class PodcastManager {
         });
         this.audio.addEventListener('pause', () => {
             this.isPlaying = false;
-            document.getElementById('play-icon').innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>'; // Play icon
+            const playIcon = document.getElementById('play-icon');
+            if (playIcon) playIcon.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>'; // Play icon
         });
     }
 
