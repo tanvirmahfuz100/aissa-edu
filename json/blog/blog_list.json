@@ -1,0 +1,20 @@
+[
+    {
+        "id": "post_1",
+        "title": "Tips for Exam Success",
+        "thumbnail": "assets/images/exam_tips.jpg",
+        "author": "Tanvir",
+        "date": "2025-11-20",
+        "post_file": "json/blog/post_1.json",
+        "description": "Learn how to prepare effectively for your upcoming exams with these proven strategies."
+    },
+    {
+        "id": "post_2",
+        "title": "Career in AIS",
+        "thumbnail": "assets/images/career_ais.jpg",
+        "author": "Alumni Association",
+        "date": "2025-11-25",
+        "post_file": "json/blog/post_2.json",
+        "description": "Explore the various career paths available for AIS graduates."
+    }
+]

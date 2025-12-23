@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post | AISSA-EDU</title>
+    <meta name="description" content="Read insights and stories from the AIS community.">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .post-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+        }
+
+        .post-body {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-primary);
+        }
+
+        .post-body h2,
+        .post-body h3 {
+            margin-top: var(--space-xl);
+            margin-bottom: var(--space-md);
+        }
+
+        .post-body p {
+            margin-bottom: var(--space-md);
+        }
+
+        .post-body img {
+            max-width: 100%;
+            border-radius: var(--radius-md);
+            margin: var(--space-lg) 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header"></header>
+
+    <main id="main-content">
+        <div class="view-header" style="max-width: 800px; margin: 0 auto var(--space-xl);">
+            <h1 class="view-title" id="post-title">Loading Post...</h1>
+            <p class="view-description" id="post-meta"></p>
+        </div>
+
+        <article class="post-container">
+            <div id="post-body" class="post-body">
+                <p>Loading content...</p>
+            </div>
+            <div
+                style="margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--border); display: flex; justify-content: space-between;">
+                <button class="btn btn-secondary" onclick="window.history.back()">Back to Blog</button>
+                <button class="btn btn-primary" id="bookmark-btn">Bookmark</button>
+            </div>
+        </article>
+    </main>
+
+    <footer id="footer"></footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = urlParams.get('id');
+
+            if (!postId) {
+                window.location.href = 'blog.html';
+                return;
+            }
+
+            const post = BLOG_POSTS[postId];
+
+            if (post) {
+                document.getElementById('post-title').textContent = post.title;
+                document.getElementById('post-meta').textContent = `By ${post.author || 'Admin'} • ${post.date}`;
+                document.getElementById('post-body').innerHTML = post.content;
+
+                const bookmarkBtn = document.getElementById('bookmark-btn');
+                const updateBookmarkBtn = () => {
+                    const isBookmarked = bookmarkManager.isBookmarked('blogs', postId);
+                    bookmarkBtn.textContent = isBookmarked ? 'Bookmarked' : 'Bookmark';
+                    bookmarkBtn.classList.toggle('btn-primary', !isBookmarked);
+                    bookmarkBtn.classList.toggle('btn-secondary', isBookmarked);
+                };
+
+                bookmarkBtn.onclick = () => {
+                    if (bookmarkManager.isBookmarked('blogs', postId)) {
+                        bookmarkManager.remove('blogs', postId);
+                    } else {
+                        bookmarkManager.add('blogs', { id: postId, ...post });
+                    }
+                    updateBookmarkBtn();
+                };
+
+                updateBookmarkBtn();
+            } else {
+                document.getElementById('post-title').textContent = 'Post not found';
+                document.getElementById('post-body').innerHTML = '<p>The requested blog post could not be found.</p>';
+            }
+        });
+    </script>
+</body>
+
+</html>

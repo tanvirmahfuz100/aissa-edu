@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Publication | AISSA-EDU</title>
+    <meta name="description" content="Read research papers and academic works from the AIS Department.">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .reader-container {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 200px);
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .reader-header {
+            padding: var(--space-md) var(--space-lg);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pdf-viewer {
+            flex: 1;
+            background-color: #525659;
+        }
+
+        .pdf-viewer iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header"></header>
+
+    <main id="main-content">
+        <div class="view-header">
+            <h1 class="view-title" id="pub-title">Loading Publication...</h1>
+            <p class="view-description" id="pub-meta"></p>
+        </div>
+
+        <div class="reader-container">
+            <div class="reader-header">
+                <span class="tag" id="pub-tag">Publication</span>
+                <div style="display: flex; gap: var(--space-sm);">
+                    <button class="btn btn-secondary" onclick="window.history.back()" title="Go Back (Alt+Left)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m15 18-6-6 6-6" />
+                        </svg>
+                        Back
+                    </button>
+
+                    <!-- Font Size Controls -->
+                    <div style="display: flex; gap: 0;">
+                        <button class="btn btn-secondary" onclick="settingsManager.decreaseFontSize()"
+                            title="Decrease Font Size"
+                            style="border-top-right-radius: 0; border-bottom-right-radius: 0; padding-right: 8px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M4 12h16" />
+                            </svg>
+                        </button>
+                        <button class="btn btn-secondary" onclick="settingsManager.resetFontSize()"
+                            title="Reset Font Size"
+                            style="border-radius: 0; border-left: none; border-right: none; padding-left: 8px; padding-right: 8px;">
+                            <span style="font-weight: 700; font-size: 14px;">Aa</span>
+                        </button>
+                        <button class="btn btn-secondary" onclick="settingsManager.increaseFontSize()"
+                            title="Increase Font Size"
+                            style="border-top-left-radius: 0; border-bottom-left-radius: 0; padding-left: 8px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M5 12h14" />
+                                <path d="M12 5v14" />
+                            </svg>
+                        </button>
+                    </div>
+
+
+
+                    <!-- Share Buttons -->
+                    <button class="btn btn-secondary" id="share-wa-btn" title="Share on WhatsApp">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
+                            <path
+                                d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
+                        </svg>
+                    </button>
+                    <button class="btn btn-secondary" id="share-fb-btn" title="Share on Messenger">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                        </svg>
+                    </button>
+                    <!-- Dark Mode & Bookmark -->
+                    <button class="btn btn-secondary" id="pdf-dark-mode-btn" style="display: none;"
+                        title="Toggle PDF Dark Mode (Ctrl+D)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                        Dark Mode
+                    </button>
+                    <button class="btn btn-primary" id="bookmark-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z" />
+                        </svg>
+                        Bookmark
+                    </button>
+                </div>
+            </div>
+            <div class="pdf-viewer" id="pdf-container" style="position: relative;">
+                <!-- Gateway Overlay -->
+                <div id="pdf-gateway"
+                    style="position: absolute; inset: 0; background: var(--surface); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                        stroke="var(--text-secondary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="margin-bottom: var(--space-4);">
+                        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                        <polyline points="14 2 14 8 20 8" />
+                    </svg>
+                    <h2 style="margin-bottom: var(--space-4);">Read Document Online</h2>
+                    <div class="gateway-message">
+                        <p style="margin-bottom: var(--space-2); color: var(--text-secondary);">
+                            Reading online uses internet data. Use Wi-Fi for the best experience.
+                        </p>
+                    </div>
+                    <div style="display: flex; gap: var(--space-4);">
+                        <button id="read-online-btn" class="btn btn-primary">Read Online</button>
+                        <a id="download-btn" href="#" target="_blank" class="btn btn-secondary">Download PDF</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="footer"></footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        function initReader() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const pubId = urlParams.get('id');
+
+            if (!pubId) {
+                window.location.href = 'publications.html';
+                return;
+            }
+
+            try {
+                const publications = PUBLICATIONS_DATA;
+                const pub = publications.find(p => p.id === pubId);
+
+                if (!pub) {
+                    document.getElementById('pub-title').textContent = 'Publication not found';
+                    return;
+                }
+
+                // Track History
+                historyManager.add({
+                    id: pub.id,
+                    title: pub.title,
+                    type: 'publication',
+                    link: `read_publication.html?id=${pub.id}`
+                });
+
+                document.getElementById('pub-title').textContent = pub.title;
+                document.getElementById('pub-meta').textContent = `Faculty: ${pub.faculty} | Authors: ${pub.authors}`;
+
+                let previewLink = pub.link;
+                if (pub.link && pub.link.includes('drive.google.com')) {
+                    const fileIdMatch = pub.link.match(/\/d\/(.+?)\//);
+                    if (fileIdMatch && fileIdMatch[1]) {
+                        previewLink = `https://drive.google.com/file/d/${fileIdMatch[1]}/preview`;
+                    }
+                }
+
+                // Setup Gateway
+                const readBtn = document.getElementById('read-online-btn');
+                const downloadBtn = document.getElementById('download-btn');
+                const gateway = document.getElementById('pdf-gateway');
+                const darkModeBtn = document.getElementById('pdf-dark-mode-btn');
+
+                downloadBtn.href = pub.link;
+
+                readBtn.onclick = () => {
+                    gateway.style.display = 'none';
+                    darkModeBtn.style.display = 'inline-flex';
+                    const iframe = document.createElement('iframe');
+                    iframe.src = previewLink;
+                    iframe.allow = 'autoplay';
+                    iframe.id = 'pdf-frame';
+                    iframe.style.width = '100%';
+                    iframe.style.height = '100%';
+                    iframe.style.border = 'none';
+                    document.getElementById('pdf-container').appendChild(iframe);
+                };
+
+                // Share Logic
+                document.getElementById('share-wa-btn').onclick = () => shareManager.share('whatsapp', pub.title);
+                document.getElementById('share-fb-btn').onclick = () => shareManager.share('messenger', pub.title);
+
+                // Bookmark Logic
+                const bookmarkBtn = document.getElementById('bookmark-btn');
+                const updateBookmarkBtn = () => {
+                    const isBookmarked = bookmarkManager.isBookmarked('publications', pub.id);
+                    bookmarkBtn.textContent = isBookmarked ? 'Bookmarked' : 'Bookmark';
+                    bookmarkBtn.classList.toggle('btn-primary', !isBookmarked);
+                    bookmarkBtn.classList.toggle('btn-secondary', isBookmarked);
+                };
+
+                bookmarkBtn.onclick = () => {
+                    if (bookmarkManager.isBookmarked('publications', pub.id)) {
+                        bookmarkManager.remove('publications', pub.id);
+                    } else {
+                        bookmarkManager.add('publications', pub);
+                    }
+                    updateBookmarkBtn();
+                };
+
+                updateBookmarkBtn();
+
+                // Dark Mode PDF Logic
+                // darkModeBtn is already defined above
+                let isPdfDarkMode = false;
+
+                darkModeBtn.onclick = () => {
+                    isPdfDarkMode = !isPdfDarkMode;
+                    const frame = document.getElementById('pdf-frame');
+
+                    if (isPdfDarkMode) {
+                        if (frame) frame.style.filter = "invert(1) hue-rotate(180deg)";
+                        darkModeBtn.style.background = "var(--accent)";
+                        darkModeBtn.style.color = "white";
+                        darkModeBtn.textContent = "Normal Mode";
+                    } else {
+                        if (frame) frame.style.filter = "none";
+                        darkModeBtn.style.background = ""; // Reset to default btn-secondary class styles
+                        darkModeBtn.style.color = "";
+                        darkModeBtn.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg> Dark Mode`;
+                    }
+                };
+
+
+
+            } catch (err) {
+                console.error('Error loading publication:', err);
+                const title = document.getElementById('pub-title');
+                if (title) {
+                    title.textContent = 'Error: ' + err.message;
+                    title.style.color = '#ef4444';
+                }
+            }
+        }
+
+        initReader();
+    </script>
+</body>
+
+</html>

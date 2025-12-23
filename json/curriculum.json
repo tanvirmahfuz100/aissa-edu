@@ -1,0 +1,273 @@
+{
+    "BBA": {
+        "years": {
+            "1": {
+                "semesters": {
+                    "1": [
+                        {
+                            "code": "1101",
+                            "course_title": "Introduction to Financial Accounting",
+                            "credit": 3
+                        },
+                        {
+                            "code": "1102",
+                            "course_title": "Introduction to Business",
+                            "credit": 3
+                        },
+                        {
+                            "code": "1103",
+                            "course_title": "Business Communication and Report Writing",
+                            "credit": 3
+                        },
+                        {
+                            "code": "1104",
+                            "course_title": "Mathematics for Business Decisions-I",
+                            "credit": 3
+                        },
+                        {
+                            "code": "1105",
+                            "course_title": "History of the Emergence of Bangladesh",
+                            "credit": 4
+                        }
+                    ],
+                    "2": [
+                        {
+                            "code": "1201",
+                            "course_title": "Intermediate Accounting",
+                            "credit": 3
+                        },
+                        {
+                            "code": "1202",
+                            "course_title": "Microeconomics",
+                            "credit": 3
+                        },
+                        {
+                            "code": "1203",
+                            "course_title": "Management",
+                            "credit": 3
+                        },
+                        {
+                            "code": "1204",
+                            "course_title": "Mathematics for Business Decisions-II",
+                            "credit": 3
+                        },
+                        {
+                            "code": "1205",
+                            "course_title": "Computer Concepts and Application",
+                            "credit": 2
+                        },
+                        {
+                            "code": "1206",
+                            "course_title": "Lab: Office Application",
+                            "credit": 2
+                        }
+                    ]
+                }
+            },
+            "2": {
+                "semesters": {
+                    "3": [
+                        {
+                            "code": "2101",
+                            "course_title": "Advanced Financial Accounting-I",
+                            "credit": 3
+                        },
+                        {
+                            "code": "2102",
+                            "course_title": "Macroeconomics",
+                            "credit": 3
+                        },
+                        {
+                            "code": "2103",
+                            "course_title": "Business Statistics-I",
+                            "credit": 3
+                        },
+                        {
+                            "code": "2104",
+                            "course_title": "Business Laws",
+                            "credit": 3
+                        },
+                        {
+                            "code": "2105",
+                            "course_title": "Financial Management",
+                            "credit": 3
+                        }
+                    ],
+                    "4": [
+                        {
+                            "code": "2201",
+                            "course_title": "Advanced Financial Accounting–II",
+                            "credit": 3
+                        },
+                        {
+                            "code": "2202",
+                            "course_title": "Corporate Laws and Secretarial Practices",
+                            "credit": 3
+                        },
+                        {
+                            "code": "2203",
+                            "course_title": "Business Statistics-II",
+                            "credit": 3
+                        },
+                        {
+                            "code": "2204",
+                            "course_title": "Marketing",
+                            "credit": 3
+                        },
+                        {
+                            "code": "2205",
+                            "course_title": "Income Tax: Laws and Practice",
+                            "credit": 3
+                        },
+                        {
+                            "code": "2206",
+                            "course_title": "Lab: Programming and Database Management",
+                            "credit": 2
+                        }
+                    ]
+                }
+            },
+            "3": {
+                "semesters": {
+                    "5": [
+                        {
+                            "code": "3101",
+                            "course_title": "Cost Accounting",
+                            "credit": 3
+                        },
+                        {
+                            "code": "3102",
+                            "course_title": "Corporate Finance",
+                            "credit": 3
+                        },
+                        {
+                            "code": "3103",
+                            "course_title": "Audit and Assurance",
+                            "credit": 3
+                        },
+                        {
+                            "code": "3104",
+                            "course_title": "Banking and Insurance",
+                            "credit": 3
+                        },
+                        {
+                            "code": "3105",
+                            "course_title": "VAT and Cross-Border Taxation",
+                            "credit": 3
+                        },
+                        {
+                            "code": "3106",
+                            "course_title": "Entrepreneurship and Business Development",
+                            "credit": 1
+                        }
+                    ],
+                    "6": [
+                        {
+                            "code": "3201",
+                            "course_title": "Management Accounting",
+                            "credit": 3
+                        },
+                        {
+                            "code": "3202",
+                            "course_title": "Corporate Reporting",
+                            "credit": 3
+                        },
+                        {
+                            "code": "3203",
+                            "course_title": "Forensic Accounting",
+                            "credit": 3
+                        },
+                        {
+                            "code": "3204",
+                            "course_title": "Organizational Behavior",
+                            "credit": 3
+                        },
+                        {
+                            "code": "3205",
+                            "course_title": "Accounting Information Systems",
+                            "credit": 2
+                        },
+                        {
+                            "code": "3206",
+                            "course_title": "Lab: Enterprise Resource Planning",
+                            "credit": 2
+                        }
+                    ]
+                }
+            },
+            "4": {
+                "semesters": {
+                    "7": [
+                        {
+                            "code": "4101",
+                            "course_title": "Advanced Management Accounting",
+                            "credit": 3
+                        },
+                        {
+                            "code": "4102",
+                            "course_title": "Financial Market and Investment Analysis",
+                            "credit": 3
+                        },
+                        {
+                            "code": "4103",
+                            "course_title": "Public Sector and NGO Accounting",
+                            "credit": 3
+                        },
+                        {
+                            "code": "4104",
+                            "course_title": "Supply Chain and Operation Management",
+                            "credit": 3
+                        },
+                        {
+                            "code": "4105",
+                            "course_title": "IT Governance and Information System Audit",
+                            "credit": 3
+                        }
+                    ],
+                    "8": [
+                        {
+                            "code": "4201",
+                            "course_title": "Accounting Theory",
+                            "credit": 3
+                        },
+                        {
+                            "code": "4202",
+                            "course_title": "Business Analysis and Valuation",
+                            "credit": 3
+                        },
+                        {
+                            "code": "4203",
+                            "course_title": "Research Methodology",
+                            "credit": 3
+                        },
+                        {
+                            "code": "4204",
+                            "course_title": "Strategic Management",
+                            "credit": 3
+                        },
+                        {
+                            "code": "4205",
+                            "course_title": "Data Analytics",
+                            "credit": 2
+                        },
+                        {
+                            "code": "4206",
+                            "course_title": "Lab: Application of Data Analytic Tools",
+                            "credit": 2
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "MBA": {
+        "years": {
+            "1": {
+                "semesters": {
+                    "1": [],
+                    "2": []
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results | AISSA-EDU</title>
+    <meta name="description" content="Search results for academic resources, blog posts, and publications.">
+
+    <link rel="stylesheet" href="css/style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header id="header"></header>
+
+    <main id="main-content">
+        <div class="view-header">
+            <h1 class="view-title">Search Results</h1>
+            <p class="view-description" id="search-info">Searching for results...</p>
+        </div>
+
+        <div id="results-container" class="issue-list">
+            <p style="text-align: center; padding: 2rem;">Searching...</p>
+        </div>
+    </main>
+
+    <footer id="footer"></footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('q');
+
+            if (!query) {
+                document.getElementById('search-info').textContent = 'No search query provided.';
+                document.getElementById('results-container').innerHTML = '';
+                return;
+            }
+
+            document.getElementById('search-info').textContent = `Results for "${query}"`;
+            await performSearch(query.toLowerCase().trim());
+        });
+
+        async function performSearch(query) {
+            const container = document.getElementById('results-container');
+            const results = [];
+
+            try {
+                // 1. Search Resources
+                const resResponse = await fetch('json/resources.json');
+                const resources = await resResponse.json();
+                resources.forEach(r => {
+                    if (r.title.toLowerCase().includes(query) || (r.description && r.description.toLowerCase().includes(query))) {
+                        results.push({
+                            title: r.title,
+                            meta: `${r.programme || ''} ${r.semester ? 'Sem ' + r.semester : ''}`,
+                            tag: 'Resource',
+                            link: `download.html?id=${r.id}`
+                        });
+                    }
+                });
+
+                // 2. Search Publications
+                const pubResponse = await fetch('json/publications.json');
+                const publications = await pubResponse.json();
+                publications.forEach(p => {
+                    if (p.title.toLowerCase().includes(query) || p.authors.toLowerCase().includes(query)) {
+                        results.push({
+                            title: p.title,
+                            meta: p.authors,
+                            tag: 'Publication',
+                            link: `read_publication.html?id=${p.id}`
+                        });
+                    }
+                });
+
+                // 3. Search Blog
+                const blogResponse = await fetch('json/blog/blog_list.json');
+                const blogPosts = await blogResponse.json();
+                blogPosts.forEach(b => {
+                    if (b.title.toLowerCase().includes(query) || (b.summary && b.summary.toLowerCase().includes(query))) {
+                        results.push({
+                            title: b.title,
+                            meta: b.date,
+                            tag: 'Blog',
+                            link: `post.html?id=${b.id}`
+                        });
+                    }
+                });
+
+                container.innerHTML = '';
+                if (results.length === 0) {
+                    container.innerHTML = '<p style="text-align: center; padding: 3rem; color: var(--text-tertiary);">No results found.</p>';
+                } else {
+                    results.forEach(res => {
+                        const item = document.createElement('div');
+                        item.className = 'issue-item';
+                        item.onclick = () => window.location.href = res.link;
+                        item.innerHTML = `
+                            <div class="issue-status" style="background: var(--accent);"></div>
+                            <div class="issue-title">${res.title}</div>
+                            <div class="issue-meta">
+                                <span class="tag">${res.tag}</span>
+                                <span>${res.meta}</span>
+                            </div>
+                        `;
+                        container.appendChild(item);
+                    });
+                }
+            } catch (err) {
+                console.error('Search error:', err);
+                container.innerHTML = '<p style="text-align: center; color: red;">Error performing search.</p>';
+            }
+        }
+    </script>
+</body>
+
+</html>

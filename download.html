@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Details | AISSA-EDU</title>
+    <meta name="description" content="View details and download academic resources.">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .details-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: var(--space-8);
+        }
+
+        @media (max-width: 768px) {
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .thumb-card {
+            background-color: var(--surface-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-4);
+            text-align: center;
+        }
+
+        .thumb-card img {
+            max-width: 100%;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header"></header>
+
+    <main id="main-content">
+        <div class="view-header">
+            <h1 class="view-title" id="res-title">Loading Resource...</h1>
+            <p class="view-description" id="res-meta"></p>
+        </div>
+
+        <div class="details-grid">
+            <div class="thumb-card">
+                <img id="res-thumb" src="assets/images/pdf_placeholder.png" alt="Thumbnail">
+            </div>
+            <div class="aissa-card">
+                <div style="margin-bottom: var(--space-6);">
+                    <h3
+                        style="font-size: 12px; color: var(--text-tertiary); text-transform: uppercase; margin-bottom: var(--space-2);">
+                        Description</h3>
+                    <p id="res-desc" style="color: var(--text-secondary); line-height: 1.6;"></p>
+                </div>
+
+                <div style="display: flex; gap: var(--space-4); margin-top: var(--space-8);">
+                    <a id="download-link" href="#" target="_blank" class="btn btn-primary"
+                        style="flex: 1; text-align: center;">Download / Open</a>
+                    <button class="btn btn-secondary" onclick="window.history.back()">Back</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="footer"></footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const resId = urlParams.get('id');
+
+            if (!resId) {
+                window.location.href = 'files.html';
+                return;
+            }
+
+            try {
+                const resources = RESOURCES_DATA;
+                const resource = resources.find(r => r.id == resId);
+
+                if (resource) {
+                    document.getElementById('res-title').textContent = resource.title;
+                    document.getElementById('res-meta').textContent = `${resource.programme || ''} ${resource.semester ? 'Semester ' + resource.semester : ''} | ${resource.author || 'AIS Dept.'}`;
+                    document.getElementById('res-desc').textContent = resource.description || 'No description available.';
+                    document.getElementById('res-thumb').src = resource.thumbnail || 'assets/images/pdf_placeholder.png';
+                    document.getElementById('download-link').href = resource.url;
+                } else {
+                    document.getElementById('res-title').textContent = 'Resource not found';
+                }
+            } catch (err) {
+                console.error('Error loading resource:', err);
+            }
+        });
+    </script>
+</body>
+
+</html>

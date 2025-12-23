@@ -1,0 +1,29 @@
+<svg width="800" height="450" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <rect width="800" height="450" fill="#000000"/>
+  <defs>
+    <linearGradient id="wave-fade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.1"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.1"/>
+    </linearGradient>
+  </defs>
+  
+  <g transform="translate(0, 225)" fill="none" stroke="url(#wave-fade)">
+    <!-- Main Amplitude -->
+    <path d="M0 0 C 200 100, 200 -100, 400 0 C 600 100, 600 -100, 800 0" stroke-width="2"/>
+    
+    <!-- Harmonic 1 -->
+    <path d="M0 0 C 150 50, 250 -50, 400 0 C 550 50, 650 -50, 800 0" stroke-width="1" opacity="0.6"/>
+    
+    <!-- Harmonic 2 -->
+    <path d="M0 0 C 100 150, 300 -150, 400 0 C 500 150, 700 -150, 800 0" stroke-width="0.5" opacity="0.4"/>
+    
+    <!-- High Frequency Detail -->
+    <path d="M0 0 Q 50 20, 100 0 T 200 0 T 300 0 T 400 0 T 500 0 T 600 0 T 700 0 T 800 0" stroke-width="0.5" opacity="0.3"/>
+    
+    <!-- Vertical Data Lines -->
+    <line x1="200" y1="-50" x2="200" y2="50" stroke="#ffffff" stroke-width="0.5" stroke-dasharray="2 4" opacity="0.3"/>
+    <line x1="400" y1="-80" x2="400" y2="80" stroke="#ffffff" stroke-width="0.5" stroke-dasharray="2 4" opacity="0.3"/>
+    <line x1="600" y1="-50" x2="600" y2="50" stroke="#ffffff" stroke-width="0.5" stroke-dasharray="2 4" opacity="0.3"/>
+  </g>
+</svg>

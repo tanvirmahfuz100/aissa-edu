@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Comprehensive student resources for AIS Department, including course materials, question banks, and GPA calculator.">
+    <meta name="theme-color" content="#000000">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aissa-edu.github.io/">
+    <meta property="og:title" content="AISSA-EDU | Education & Research Institute Resource Hub">
+    <meta property="og:description"
+        content="Access premium academic resources, research publications, and student tools for the AIS Department.">
+    <meta property="og:image" content="https://aissa-edu.github.io/assets/images/logo.png">
+
+    <title>AISSA-EDU | Education & Research Institute</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <link rel="apple-touch-icon" href="assets/images/logo.png">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app-container">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="workspace-switcher">
+                    <img src="assets/images/logo.png" alt="Logo" style="width: 24px; height: 24px; border-radius: 4px;">
+                    <span>AISSA-EDU</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="margin-left: auto; opacity: 0.5;">
+                        <path d="m6 9 6 6 6-6" />
+                    </svg>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-group">
+                    <div class="nav-item active" data-link="index.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                            <polyline points="9 22 9 12 15 12 15 22" />
+                        </svg>
+                        <span>Home</span>
+                    </div>
+                    <div class="nav-item" data-link="course_materials.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                        </svg>
+                        <span>Materials</span>
+                    </div>
+                    <div class="nav-item" data-link="question_bank.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                            <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                        <span>Archive</span>
+                    </div>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-group-title">Research & Insights</div>
+                    <div class="nav-item" data-link="publications.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                        </svg>
+                        <span>Publications</span>
+                    </div>
+                    <div class="nav-item" data-link="blog.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                        </svg>
+                        <span>Blog</span>
+                    </div>
+                    <div class="nav-item" data-link="podcast.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                            <line x1="12" y1="19" x2="12" y2="23"></line>
+                            <line x1="8" y1="23" x2="16" y2="23"></line>
+                        </svg>
+                        <span>Podcast</span>
+                    </div>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-group-title">Tools</div>
+                    <div class="nav-item" data-link="gpa_calculator.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                            <line x1="3" y1="9" x2="21" y2="9" />
+                            <line x1="9" y1="21" x2="9" y2="9" />
+                        </svg>
+                        <span>GPA Calculator</span>
+                    </div>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-group-title">General</div>
+                    <div class="nav-item" data-link="about.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="12" y1="16" x2="12" y2="12" />
+                            <line x1="12" y1="8" x2="12.01" y2="8" />
+                        </svg>
+                        <span>About</span>
+                    </div>
+                    <div class="nav-item" data-link="contact.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                        <span>Contact Us</span>
+                    </div>
+                    <div class="nav-item" id="settings-trigger">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3" />
+                            <path
+                                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                        </svg>
+                        <span>Settings</span>
+                    </div>
+            </nav>
+
+            <div class="sidebar-footer" style="padding: var(--space-4); border-top: 1px solid var(--border);">
+                <div class="nav-item" style="cursor: default; opacity: 0.5;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3" />
+                        <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z" />
+                    </svg>
+                    <span>v1.2.0</span>
+                </div>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <header class="top-bar">
+                <div class="top-bar-left">
+                    <button id="mobile-menu-toggle"
+                        style="display: none; background: none; border: none; color: var(--text-primary); cursor: pointer;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="3" y1="12" x2="21" y2="12" />
+                            <line x1="3" y1="6" x2="21" y2="6" />
+                            <line x1="3" y1="18" x2="21" y2="18" />
+                        </svg>
+                    </button>
+                    <div class="breadcrumb" id="breadcrumb">
+                        <span style="font-weight: 600; color: var(--text-primary);">AISSA-EDU</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            style="opacity: 0.5;">
+                            <path d="m9 18 6-6-6-6" />
+                        </svg>
+                        <span id="current-page-name">Home</span>
+                    </div>
+                </div>
+                <div class="top-bar-right">
+                    <div class="search-trigger" id="cmd-k-trigger">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8" />
+                            <path d="m21 21-4.35-4.35" />
+                        </svg>
+                        <span>Search...</span>
+                        <kbd>Ctrl K</kbd>
+                    </div>
+                    <div class="user-profile"
+                        style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), #7c89eb); color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(94, 106, 210, 0.3);">
+                        TM
+                    </div>
+                </div>
+            </header>
+            <main class="content-area" id="main-content-target">
+                <div class="hero-section">
+                    <h1 class="hero-title">The academic hub for <br>modern AIS students</h1>
+                    <p class="hero-description">AISSA-EDU is shaped by the practices and principles that distinguish
+                        world-class students from the rest: relentless focus, fast execution, and a commitment to the
+                        quality of craft.</p>
+                </div>
+
+                <div class="aissa-card">
+                    <h2 style="margin-bottom: var(--space-4);">Latest Updates</h2>
+                    <div id="headlines-ticker" class="issue-list">
+                        <div class="issue-item">
+                            <div class="issue-status" style="background: var(--accent);"></div>
+                            <div class="issue-title">Loading latest academic updates...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="aissa-card" id="continue-reading-section" style="display: none;">
+                    <h2 style="margin-bottom: var(--space-4);">Continue Reading</h2>
+                    <div id="reading-history-list" class="issue-list">
+                        <!-- Dynamic history -->
+                    </div>
+                </div>
+
+                <div class="aissa-card" id="continue-listening-section" style="display: none;">
+                    <h2 style="margin-bottom: var(--space-4);">Continue Listening</h2>
+                    <div id="listening-history-list" class="issue-list">
+                        <!-- Dynamic history -->
+                    </div>
+                </div>
+
+                <div class="aissa-card">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+                        <h2 style="margin: 0;">Featured Podcasts</h2>
+                        <a href="podcast.html" class="btn-text" style="font-size: 14px; color: var(--accent);">Browse
+                            All</a>
+                    </div>
+                    <div id="featured-podcasts-list" class="issue-list">
+                        <!-- Dynamic podcasts -->
+                    </div>
+                </div>
+
+                <div class="feature-grid">
+                    <a href="course_materials.html" class="feature-card">
+                        <div class="feature-card-image-wrapper bg-academic">
+                            <img src="assets/images/materials_geo.svg" alt="Academic Materials"
+                                class="feature-card-image">
+                        </div>
+                        <div class="feature-card-content">
+                            <span class="feature-card-title">Academic Materials</span>
+                            <div class="feature-card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M5 12h14m-7-7 7 7-7 7" />
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="question_bank.html" class="feature-card">
+                        <div class="feature-card-image-wrapper bg-archive">
+                            <img src="assets/images/archive_geo.svg" alt="Research Archive" class="feature-card-image">
+                        </div>
+                        <div class="feature-card-content">
+                            <span class="feature-card-title">Research Archive</span>
+                            <div class="feature-card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M5 12h14m-7-7 7 7-7 7" />
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="gpa_calculator.html" class="feature-card">
+                        <div class="feature-card-image-wrapper bg-tools">
+                            <img src="assets/images/tools_geo.svg" alt="Performance Tools" class="feature-card-image">
+                        </div>
+                        <div class="feature-card-content">
+                            <span class="feature-card-title">Performance Tools</span>
+                            <div class="feature-card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M5 12h14m-7-7 7 7-7 7" />
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="blog.html" class="feature-card">
+                        <div class="feature-card-image-wrapper bg-blog">
+                            <img src="assets/images/blog_geo.svg" alt="Student Insights" class="feature-card-image">
+                        </div>
+                        <div class="feature-card-content">
+                            <span class="feature-card-title">Student Insights</span>
+                            <div class="feature-card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M5 12h14m-7-7 7 7-7 7" />
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-6);">
+                    <div class="aissa-card">
+                        <h3>Featured Research</h3>
+                        <div id="featured-content-dynamic" style="margin-top: var(--space-4);">
+                            <p>Loading featured research initiatives...</p>
+                        </div>
+                    </div>
+
+                    <div class="aissa-card">
+                        <h3>Suggested Publications</h3>
+                        <div id="pub-home-grid" class="issue-list" style="margin-top: var(--space-4);">
+                            <!-- Random publications will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Command Menu -->
+    <div class="modal-overlay" id="command-menu-overlay">
+        <div class="command-menu">
+            <div class="command-input-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    style="opacity: 0.5;">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.35-4.35" />
+                </svg>
+                <input type="text" class="command-input" id="command-input" placeholder="Search for anything..."
+                    autofocus>
+            </div>
+            <div class="command-list" id="command-list">
+                <!-- Dynamic commands -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Headlines Ticker Logic
+            const notices = NOTICES_DATA;
+            const container = document.getElementById('headlines-ticker');
+            if (notices && notices.length > 0) {
+                container.innerHTML = notices.map((notice, index) => {
+                    const title = typeof notice === 'string' ? notice : notice.title;
+                    return `
+                        <div class="issue-item" onclick="showNoticeDetail(${index})">
+                            <div class="issue-status" style="background: var(--accent);"></div>
+                            <div class="issue-title">${title}</div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            window.showNoticeDetail = (index) => {
+                const notice = NOTICES_DATA[index];
+                const title = typeof notice === 'string' ? notice : notice.title;
+                const content = typeof notice === 'object' ? notice.content : '(No additional details available)';
+
+                // Use a modal to show details
+                const modal = document.getElementById('notice-detail-modal');
+                document.getElementById('notice-modal-title').innerText = title;
+                document.getElementById('notice-modal-content').innerText = content;
+                modal.classList.add('active');
+            };
+
+            window.closeNoticeModal = () => {
+                document.getElementById('notice-detail-modal').classList.remove('active');
+            };
+
+            // Load Featured Content
+            const data = FEATURED_DATA;
+            const featuredContainer = document.getElementById('featured-content-dynamic');
+            if (data) {
+                featuredContainer.innerHTML = `
+                    <h4 style="margin-bottom: var(--space-2);">${data.title}</h4>
+                    <p style="color: var(--text-secondary); margin-bottom: var(--space-4);">${data.description}</p>
+                    <a href="${data.ctaLink || 'publications.html'}" class="btn btn-primary">${data.cta || 'Explore Research'}</a>
+                `;
+            }
+
+            // Load Reading History
+            const history = historyManager.getRecent(3);
+            if (history.length > 0) {
+                document.getElementById('continue-reading-section').style.display = 'block';
+                const historyList = document.getElementById('reading-history-list');
+                historyList.innerHTML = history.map(item => `
+                    <div class="issue-item" onclick="window.location.href='${item.link}'">
+                        <div class="issue-status" style="background: var(--text-secondary);"></div>
+                        <div class="issue-title">${item.title}</div>
+                        <div class="issue-meta">
+                            <span class="tag" style="text-transform: capitalize;">${item.type}</span>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Load Random Publications
+            const pubs = PUBLICATIONS_DATA;
+            if (pubs && pubs.length > 0) {
+                const grid = document.getElementById('pub-home-grid');
+                const selected = pubs.sort(() => 0.5 - Math.random()).slice(0, 3);
+
+                grid.innerHTML = selected.map(pub => `
+                    <div class="issue-item" onclick="window.location.href='read_publication.html?id=${pub.id}'">
+                        <div class="issue-title">${pub.title}</div>
+                        <div class="issue-meta">
+                            <span class="tag">${pub.faculty}</span>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Load Podcasts for Homepage
+            try {
+                const res = await fetch('json/podcasts.json');
+                const podcasts = await res.json();
+
+                // Featured (3 random)
+                if (podcasts.length > 0) {
+                    const featuredList = document.getElementById('featured-podcasts-list');
+                    const selected = podcasts.sort(() => 0.5 - Math.random()).slice(0, 3);
+                    featuredList.innerHTML = selected.map(pod => `
+                        <div class="issue-item" onclick="podcastManager.play('${pod.id}')">
+                            <div class="issue-status" style="background: var(--accent);"></div>
+                            <div class="issue-title">${pod.title}</div>
+                            <div class="issue-meta">
+                                <span class="tag">${pod.duration}</span>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+
+                // Continue Listening
+                const progress = JSON.parse(localStorage.getItem('podcast_progress')) || {};
+                const continueList = document.getElementById('listening-history-list');
+                const partiallyHeard = Object.keys(progress)
+                    .map(id => podcasts.find(p => p.id === id))
+                    .filter(p => p) // Remove nulls if podcast deleted
+                    .slice(0, 3);
+
+                if (partiallyHeard.length > 0) {
+                    document.getElementById('continue-listening-section').style.display = 'block';
+                    continueList.innerHTML = partiallyHeard.map(pod => `
+                        <div class="issue-item" onclick="podcastManager.play('${pod.id}')">
+                            <div class="issue-status" style="background: var(--accent);"></div>
+                            <div class="issue-title">${pod.title}</div>
+                            <div class="issue-meta">
+                                <span class="tag">Resume</span>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            } catch (e) { console.error('Error loading podcasts for home:', e); }
+        });
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js');
+            });
+        }
+    </script>
+</body>
+
+</html>

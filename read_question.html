@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Questions | AISSA-EDU</title>
+    <meta name="description" content="Practice with previous year questions and solutions for AIS Department.">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .question-card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+
+        .answer-panel {
+            background-color: var(--surface-alt);
+            border-top: 1px solid var(--border);
+            padding: var(--space-md);
+            margin-top: var(--space-md);
+            display: none;
+            border-radius: var(--radius-md);
+        }
+
+        .answer-panel.visible {
+            display: block;
+        }
+
+        .filter-bar {
+            display: flex;
+            gap: var(--space-md);
+            margin-bottom: var(--space-xl);
+            align-items: center;
+        }
+
+        .filter-select {
+            background-color: var(--surface-alt);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 6px 12px;
+            border-radius: var(--radius-md);
+            font-size: 13px;
+            outline: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header"></header>
+
+    <main id="main-content">
+        <div class="view-header">
+            <h1 class="view-title" id="exam-title">Loading Questions...</h1>
+            <p class="view-description" id="exam-meta"></p>
+        </div>
+
+        <div class="filter-bar">
+            <span style="font-size: 12px; color: var(--text-tertiary); text-transform: uppercase;">Filter
+                Session:</span>
+            <select id="session-filter" class="filter-select" onchange="filterQuestions()">
+                <option value="all">All Sessions</option>
+            </select>
+            <div style="flex: 1;"></div>
+            <button class="btn btn-secondary" onclick="window.history.back()">Back</button>
+        </div>
+
+        <div id="questions-container">
+            <p style="text-align: center; padding: 2rem;">Loading questions...</p>
+        </div>
+    </main>
+
+    <footer id="footer"></footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        let allQuestions = [];
+        let courseCode = '';
+        let program = '';
+        let semester = '';
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            courseCode = urlParams.get('course_code');
+            program = urlParams.get('program');
+            semester = urlParams.get('semester');
+
+            if (courseCode) {
+                await loadQuestions();
+            } else {
+                document.getElementById('questions-container').innerHTML = '<p style="text-align: center; padding: 2rem;">No course selected.</p>';
+            }
+        });
+
+        async function loadQuestions() {
+            try {
+                let courseTitle = 'Course Examination';
+                const curriculum = CURRICULUM_DATA;
+
+                if (curriculum[program]) {
+                    const progData = curriculum[program];
+                    // semester is "1st", keys are "1"
+                    const semNum = semester ? semester.replace(/\D/g, '') : '';
+
+                    if (progData.years) {
+                        Object.values(progData.years).forEach(year => {
+                            if (year.semesters && year.semesters[semNum]) {
+                                const course = year.semesters[semNum].find(c => c.code === courseCode);
+                                if (course) courseTitle = course.course_title;
+                            }
+                        });
+                    }
+                }
+
+                document.getElementById('exam-title').textContent = courseTitle;
+                document.getElementById('exam-meta').textContent = `${program} Semester ${semester} | ${courseCode}`;
+
+                if (QUESTIONS_DATA && QUESTIONS_DATA[courseCode]) {
+                    allQuestions = QUESTIONS_DATA[courseCode];
+                    const sessions = [...new Set(allQuestions.map(q => q.session))].sort().reverse();
+                    const filter = document.getElementById('session-filter');
+                    sessions.forEach(s => {
+                        const opt = document.createElement('option');
+                        opt.value = s;
+                        opt.textContent = s;
+                        filter.appendChild(opt);
+                    });
+                    renderQuestions(allQuestions);
+                } else {
+                    document.getElementById('questions-container').innerHTML = '<p style="text-align: center; padding: 2rem;">No questions found for this course.</p>';
+                }
+            } catch (err) {
+                console.error('Error loading questions:', err);
+                document.getElementById('questions-container').innerHTML = '<p style="text-align: center; color: red; padding: 2rem;">Error loading questions.</p>';
+            }
+        }
+
+        function renderQuestions(questions) {
+            const container = document.getElementById('questions-container');
+            container.innerHTML = '';
+
+            questions.forEach((q, index) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-md);">
+                        <span class="tag">Question ${index + 1}</span>
+                        <span style="font-size: 12px; color: var(--text-tertiary);">${q.session}</span>
+                    </div>
+                    <div style="font-size: 15px; line-height: 1.6; color: var(--text-primary); margin-bottom: var(--space-lg);">
+                        ${q.content}
+                    </div>
+                    ${q.image ? `<img src="${q.image}" style="max-width: 100%; border-radius: var(--radius-md); margin-bottom: var(--space-md);">` : ''}
+                    <button class="btn btn-secondary" onclick="toggleAnswer(this)">Show Answer</button>
+                    <div class="answer-panel">
+                        <h4 style="font-size: 12px; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: var(--space-sm);">Answer</h4>
+                        <div style="color: var(--text-secondary); line-height: 1.6;">${q.answer || 'Answer not available yet.'}</div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function filterQuestions() {
+            const session = document.getElementById('session-filter').value;
+            if (session === 'all') {
+                renderQuestions(allQuestions);
+            } else {
+                const filtered = allQuestions.filter(q => q.session === session);
+                renderQuestions(filtered);
+            }
+        }
+
+        function toggleAnswer(btn) {
+            const panel = btn.nextElementSibling;
+            panel.classList.toggle('visible');
+            btn.textContent = panel.classList.contains('visible') ? 'Hide Answer' : 'Show Answer';
+        }
+    </script>
+</body>
+
+</html>

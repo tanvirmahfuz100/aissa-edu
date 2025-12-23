@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPA Calculator | AISSA-EDU</title>
+    <meta name="description" content="Calculate your semester GPA and CGPA with our easy-to-use tool.">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app-container">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="workspace-switcher">
+                    <img src="assets/images/logo.png" alt="Logo" style="width: 24px; height: 24px; border-radius: 4px;">
+                    <span>AISSA-EDU</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="margin-left: auto; opacity: 0.5;">
+                        <path d="m6 9 6 6 6-6" />
+                    </svg>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-group">
+                    <div class="nav-item" data-link="index.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                            <polyline points="9 22 9 12 15 12 15 22" />
+                        </svg>
+                        <span>Home</span>
+                    </div>
+                    <div class="nav-item" data-link="course_materials.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                        </svg>
+                        <span>Materials</span>
+                    </div>
+                    <div class="nav-item" data-link="question_bank.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                            <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                        <span>Archive</span>
+                    </div>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-group-title">Research & Insights</div>
+                    <div class="nav-item" data-link="publications.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                        </svg>
+                        <span>Publications</span>
+                    </div>
+                    <div class="nav-item" data-link="blog.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                        </svg>
+                        <span>Blog</span>
+                    </div>
+                    <div class="nav-item" data-link="podcast.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                            <line x1="12" y1="19" x2="12" y2="23"></line>
+                            <line x1="8" y1="23" x2="16" y2="23"></line>
+                        </svg>
+                        <span>Podcast</span>
+                    </div>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-group-title">Tools</div>
+                    <div class="nav-item active" data-link="gpa_calculator.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                            <line x1="3" y1="9" x2="21" y2="9" />
+                            <line x1="9" y1="21" x2="9" y2="9" />
+                        </svg>
+                        <span>GPA Calculator</span>
+                    </div>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-group-title">General</div>
+                    <div class="nav-item" data-link="about.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="12" y1="16" x2="12" y2="12" />
+                            <line x1="12" y1="8" x2="12.01" y2="8" />
+                        </svg>
+                        <span>About</span>
+                    </div>
+                    <div class="nav-item" data-link="contact.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                        <span>Contact Us</span>
+                    </div>
+                    <div class="nav-item" id="settings-trigger">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3" />
+                            <path
+                                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                        </svg>
+                        <span>Settings</span>
+                    </div>
+            </nav>
+
+            <div class="sidebar-footer" style="padding: var(--space-4); border-top: 1px solid var(--border);">
+                <div class="nav-item" style="cursor: default; opacity: 0.5;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3" />
+                        <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z" />
+                    </svg>
+                    <span>v1.2.0</span>
+                </div>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <header class="top-bar">
+                <div class="top-bar-left">
+                    <button id="mobile-menu-toggle"
+                        style="display: none; background: none; border: none; color: var(--text-primary); cursor: pointer;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="3" y1="12" x2="21" y2="12" />
+                            <line x1="3" y1="6" x2="21" y2="6" />
+                            <line x1="3" y1="18" x2="21" y2="18" />
+                        </svg>
+                    </button>
+                    <div class="breadcrumb" id="breadcrumb">
+                        <span style="font-weight: 600; color: var(--text-primary);">AISSA-EDU</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            style="opacity: 0.5;">
+                            <path d="m9 18 6-6-6-6" />
+                        </svg>
+                        <span id="current-page-name">GPA Calculator</span>
+                    </div>
+                </div>
+                <div class="top-bar-right">
+                    <div class="search-trigger" id="cmd-k-trigger">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8" />
+                            <path d="m21 21-4.35-4.35" />
+                        </svg>
+                        <span>Search...</span>
+                        <kbd>Ctrl K</kbd>
+                    </div>
+                    <div class="user-profile"
+                        style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), #7c89eb); color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(94, 106, 210, 0.3);">
+                        TM
+                    </div>
+                </div>
+            </header>
+            <main class="content-area" id="main-content-target">
+                <div class="header-content">
+                    <div>
+                        <h1 style="font-size: 32px; font-weight: 700; margin-bottom: var(--space-4);">GPA Calculator
+                        </h1>
+                        <p style="color: var(--text-secondary); max-width: 600px;">Calculate your academic progress with
+                            precision.</p>
+                    </div>
+                    <div class="header-image-container">
+                        <img src="assets/images/tools_geo.svg" alt="Tools" class="header-image">
+                    </div>
+                </div>
+
+                <div class="aissa-card" style="padding: 0; margin-bottom: var(--space-8);">
+
+                    <div style="padding: var(--space-8);">
+                        <div
+                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-4); margin-bottom: var(--space-8);">
+                            <div>
+                                <label
+                                    style="display: block; font-size: 12px; font-weight: 600; color: var(--text-tertiary); margin-bottom: var(--space-2);">PROGRAM</label>
+                                <select id="program-select" class="btn btn-secondary"
+                                    style="width: 100%; justify-content: flex-start;" onchange="handleProgramChange()">
+                                    <option value="">Select Program</option>
+                                    <option value="BBA">BBA</option>
+                                    <option value="MBA">MBA</option>
+                                </select>
+                            </div>
+                            <div id="year-wrapper" style="display: none;">
+                                <label
+                                    style="display: block; font-size: 12px; font-weight: 600; color: var(--text-tertiary); margin-bottom: var(--space-2);">YEAR</label>
+                                <select id="year-select" class="btn btn-secondary"
+                                    style="width: 100%; justify-content: flex-start;" onchange="handleYearChange()">
+                                    <option value="">Select Year</option>
+                                    <option value="1">1st Year</option>
+                                    <option value="2">2nd Year</option>
+                                    <option value="3">3rd Year</option>
+                                    <option value="4">4th Year</option>
+                                </select>
+                            </div>
+                            <div id="semester-wrapper" style="display: none;">
+                                <label
+                                    style="display: block; font-size: 12px; font-weight: 600; color: var(--text-tertiary); margin-bottom: var(--space-2);">SEMESTER</label>
+                                <select id="semester-select" class="btn btn-secondary"
+                                    style="width: 100%; justify-content: flex-start;" onchange="loadCourses()">
+                                    <option value="">Select Semester</option>
+                                    <!-- Options will be populated dynamically -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <div id="calculator-interface" style="display: none;">
+                            <div
+                                style="display: flex; gap: var(--space-4); margin-bottom: var(--space-8); align-items: center;">
+                                <button onclick="calculateGPA()" class="btn btn-primary" style="flex: 1;">Calculate
+                                    GPA</button>
+                                <div style="display: flex; align-items: center; gap: var(--space-4);">
+                                    <span
+                                        style="color: var(--text-tertiary); font-weight: 600; text-transform: uppercase; font-size: 12px;">SGPA:</span>
+                                    <span id="gpa-result"
+                                        style="font-size: 24px; font-weight: 700; color: var(--accent);">0.00</span>
+                                </div>
+                            </div>
+                            <div id="course-list" class="issue-list">
+                                <!-- Courses will auto-load here -->
+                            </div>
+                        </div>
+
+                        <div id="mba-placeholder"
+                            style="display: none; padding: var(--space-8); text-align: center; border: 1px dashed var(--border); border-radius: var(--radius-md);">
+                            <p
+                                style="color: var(--text-secondary); font-size: 16px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                                    <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                                </svg>
+                                MBA curriculum updates are coming soon.
+                            </p>
+                        </div>
+
+                        <div id="empty-state"
+                            style="padding: var(--space-8); text-align: center; color: var(--text-tertiary);">
+                            Please select a program to begin.
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Command Menu -->
+    <div class="modal-overlay" id="command-menu-overlay">
+        <!-- ... (same command menu) ... -->
+        <div class="command-menu">
+            <div class="command-input-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    style="opacity: 0.5;">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.35-4.35" />
+                </svg>
+                <input type="text" class="command-input" id="command-input" placeholder="Search for anything..."
+                    autofocus>
+            </div>
+            <div class="command-list" id="command-list">
+                <!-- Dynamic commands -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Initialize with Defaults
+        document.addEventListener('DOMContentLoaded', () => {
+            // Default to BBA and show wrappers
+            document.getElementById('program-select').value = "BBA";
+            document.getElementById('year-wrapper').style.display = 'block';
+            document.getElementById('semester-wrapper').style.display = 'block';
+            // We won't trigger handleProgramChange full reset yet, but we enable the year dropdown logic
+        });
+
+        function handleProgramChange() {
+            const program = document.getElementById('program-select').value;
+            const yearWrapper = document.getElementById('year-wrapper');
+            const semWrapper = document.getElementById('semester-wrapper');
+            const calcInterface = document.getElementById('calculator-interface');
+            const mbaPlaceholder = document.getElementById('mba-placeholder');
+
+            // Reset Sub-Selections
+            calcInterface.style.display = 'none';
+            mbaPlaceholder.style.display = 'none';
+            document.getElementById('year-select').value = "";
+            document.getElementById('semester-select').innerHTML = '<option value="">Select Semester</option>';
+
+            if (program === 'BBA') {
+                yearWrapper.style.display = 'block';
+                semWrapper.style.display = 'block';
+            } else if (program === 'MBA') {
+                yearWrapper.style.display = 'none';
+                semWrapper.style.display = 'none';
+                mbaPlaceholder.style.display = 'block';
+            }
+        }
+
+        function handleYearChange() {
+            const year = document.getElementById('year-select').value;
+            const semSelect = document.getElementById('semester-select');
+
+            // Reset Semester
+            semSelect.innerHTML = '<option value="">Select Semester</option>';
+            document.getElementById('calculator-interface').style.display = 'none';
+
+            if (!year) return;
+
+            // Populate Semesters based on Year (2 semesters per year)
+            const startSem = (parseInt(year) - 1) * 2 + 1;
+
+            for (let i = 0; i < 2; i++) {
+                const semNum = startSem + i;
+                const suffix = (semNum === 1) ? "st" : (semNum === 2) ? "nd" : (semNum === 3) ? "rd" : "th";
+                const opt = document.createElement('option');
+                opt.value = semNum.toString();
+                opt.textContent = `${semNum}${suffix} Semester`;
+                semSelect.appendChild(opt);
+            }
+        }
+
+        function loadCourses() {
+            const program = document.getElementById('program-select').value;
+            const year = document.getElementById('year-select').value;
+            const sem = document.getElementById('semester-select').value;
+            const calcInterface = document.getElementById('calculator-interface');
+            const list = document.getElementById('course-list');
+
+            if (!sem || !program || !year) {
+                calcInterface.style.display = 'none';
+                return;
+            }
+
+            // Get courses from strict BBA Curriculum
+            const data = CURRICULUM_DATA[program];
+            if (!data || !data.years || !data.years[year] || !data.years[year].semesters[sem]) {
+                list.innerHTML = `<p style="text-align: center; color: var(--text-tertiary);">No curriculum data found for Semester ${sem}.</p>`;
+                calcInterface.style.display = 'block';
+                return;
+            }
+
+            const courses = data.years[year].semesters[sem];
+
+            list.innerHTML = '';
+            courses.forEach(course => {
+                const item = document.createElement('div');
+                item.className = 'issue-item';
+                item.style.cursor = 'default';
+                item.innerHTML = `
+                    <div class="issue-status" style="background: var(--accent);"></div>
+                    <div class="issue-title" style="flex: 2;">
+                        <span style="display: block; font-size: 11px; color: var(--text-tertiary); margin-bottom: 2px;">${course.code}</span>
+                        <span style="font-weight: 500;">${course.course_title}</span>
+                    </div>
+                    <div class="issue-meta" style="gap: var(--space-4);">
+                        <div style="background: var(--surface-alt); padding: 4px 8px; border-radius: 4px; font-size: 12px; border: 1px solid var(--border);">
+                            <span class="credit-val">${course.credit}</span> Cr
+                        </div>
+                        <select class="grade" style="padding: 6px; background: var(--surface-alt); border: 1px solid var(--border); border-radius: 4px; color: var(--text-primary); outline: none;">
+                            <option value="">Grade</option>
+                            <option value="4.00">A+</option>
+                            <option value="3.75">A</option>
+                            <option value="3.50">A-</option>
+                            <option value="3.25">B+</option>
+                            <option value="3.00">B</option>
+                            <option value="2.75">B-</option>
+                            <option value="2.50">C+</option>
+                            <option value="2.25">C</option>
+                            <option value="2.00">D</option>
+                            <option value="0.00">F</option>
+                        </select>
+                    </div>
+                `;
+                list.appendChild(item);
+            });
+
+            // Add Viva Voce (Mandatory)
+            const vivaItem = document.createElement('div');
+            vivaItem.className = 'issue-item';
+            vivaItem.style.cursor = 'default';
+            vivaItem.innerHTML = `
+                <div class="issue-status" style="background: var(--text-secondary);"></div>
+                <div class="issue-title" style="flex: 2;">
+                    <span style="display: block; font-size: 11px; color: var(--text-tertiary); margin-bottom: 2px;">VIVA</span>
+                    <span style="font-weight: 500;">Viva Voce</span>
+                </div>
+                <div class="issue-meta" style="gap: var(--space-4);">
+                    <div style="background: var(--surface-alt); padding: 4px 8px; border-radius: 4px; font-size: 12px; border: 1px solid var(--border);">
+                        <span class="credit-val">0.75</span> Cr
+                    </div>
+                    <select class="grade" style="padding: 6px; background: var(--surface-alt); border: 1px solid var(--border); border-radius: 4px; color: var(--text-primary); outline: none;">
+                        <option value="">Grade</option>
+                        <option value="4.00">A+</option>
+                        <option value="3.75">A</option>
+                        <option value="3.50">A-</option>
+                        <option value="3.25">B+</option>
+                        <option value="3.00">B</option>
+                        <option value="2.75">B-</option>
+                        <option value="2.50">C+</option>
+                        <option value="2.25">C</option>
+                        <option value="2.00">D</option>
+                        <option value="0.00">F</option>
+                    </select>
+                </div>
+            `;
+            list.appendChild(vivaItem);
+
+
+            calcInterface.style.display = 'block';
+            document.getElementById('gpa-result').innerText = "0.00";
+        }
+
+        function calculateGPA() {
+            const grades = document.querySelectorAll('.grade');
+            const credits = document.querySelectorAll('.credit-val');
+            let totalPoints = 0;
+            let totalCredits = 0;
+            let allSelected = true;
+
+            for (let i = 0; i < grades.length; i++) {
+                const g = parseFloat(grades[i].value);
+                const c = parseFloat(credits[i].innerText);
+
+                if (isNaN(g)) {
+                    allSelected = false;
+                } else {
+                    totalPoints += (c * g);
+                    totalCredits += c;
+                }
+            }
+
+            if (!allSelected) {
+                alert("Please select a grade for all courses (including Viva).");
+                return;
+            }
+
+            const gpa = totalCredits > 0 ? (totalPoints / totalCredits).toFixed(2) : "0.00";
+            document.getElementById('gpa-result').innerText = gpa;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+[
+    {
+        "id": "res-1",
+        "title": "Financial Accounting Basics",
+        "type": "upload",
+        "url": "assets/uploads/accounting_basics.pdf",
+        "category": "course",
+        "thumbnail": "https://images.unsplash.com/photo-1554224155-15bf6c7c10b7?q=80&w=400&h=500&auto=format&fit=crop",
+        "description": "Comprehensive guide to the fundamental principles of accounting.",
+        "programme": "BBA",
+        "year": "1",
+        "semester": "1",
+        "code": "1101",
+        "course_title": "Introduction to Financial Accounting",
+        "author": "Dr. Rahman"
+    },
+    {
+        "id": "res-2",
+        "title": "Macroeconomics Lecture Notes",
+        "type": "link",
+        "url": "https://example.com/macro-notes",
+        "category": "course",
+        "thumbnail": "https://images.unsplash.com/photo-1611974717535-7c2517ae71e2?q=80&w=400&h=500&auto=format&fit=crop",
+        "description": "Deep dive into global economic structures and metrics.",
+        "programme": "BBA",
+        "year": "2",
+        "semester": "3",
+        "code": "2102",
+        "course_title": "Macroeconomics",
+        "author": "Prof. Karim"
+    },
+    {
+        "id": "res-3",
+        "title": "Advanced Audit Checklist",
+        "type": "upload",
+        "url": "assets/uploads/audit_checklist.pdf",
+        "category": "other",
+        "thumbnail": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=400&h=500&auto=format&fit=crop",
+        "description": "Professional audit verification steps for senior students.",
+        "programme": "MBA",
+        "year": "1",
+        "semester": "1",
+        "code": "5101",
+        "course_title": "Advanced Audit and Assurance",
+        "author": "Independent Audit Firm"
+    }
+]

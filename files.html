@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources | AISSA-EDU</title>
+    <meta name="description" content="Access lecture notes, slides, and reference books for your program.">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header id="header"></header>
+
+    <main id="main-content">
+        <div class="view-header">
+            <h1 class="view-title" id="page-title">Resources</h1>
+            <p class="view-description">Browse and download academic materials.</p>
+        </div>
+
+        <div id="files-container" class="issue-list">
+            <p style="text-align: center; padding: 2rem;">Loading resources...</p>
+        </div>
+    </main>
+
+    <footer id="footer"></footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const program = urlParams.get('program');
+            const semester = urlParams.get('semester');
+            const category = urlParams.get('category');
+
+            try {
+                const resources = RESOURCES_DATA;
+                let filtered = resources;
+
+                if (program && semester) {
+                    document.getElementById('page-title').textContent = `${program} Semester ${semester}`;
+                    filtered = resources.filter(r => r.programme === program && r.semester === semester);
+                } else if (category) {
+                    document.getElementById('page-title').textContent = `${category.charAt(0).toUpperCase() + category.slice(1)} Resources`;
+                    filtered = resources.filter(r => r.category === category);
+                }
+
+                displayResources(filtered);
+            } catch (err) {
+                console.error('Error loading resources:', err);
+                document.getElementById('files-container').innerHTML = '<p style="text-align: center; color: red;">Error loading resources.</p>';
+            }
+        });
+
+        function displayResources(resources) {
+            const container = document.getElementById('files-container');
+            container.innerHTML = '';
+
+            if (!resources || resources.length === 0) {
+                container.innerHTML = '<p style="text-align: center; padding: 3rem; color: var(--text-tertiary);">No resources found for this selection.</p>';
+                return;
+            }
+
+            resources.forEach(res => {
+                const item = document.createElement('div');
+                item.className = 'issue-item';
+                item.onclick = () => window.location.href = `download.html?id=${res.id}`;
+                item.innerHTML = `
+                    <div class="issue-status" style="background: var(--accent);"></div>
+                    <div class="issue-title">${res.title}</div>
+                    <div class="issue-meta">
+                        <span class="tag">${res.type === 'upload' ? 'PDF' : 'Link'}</span>
+                        <span>${res.programme || ''} ${res.semester ? 'Sem ' + res.semester : ''}</span>
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+        }
+    </script>
+</body>
+
+</html>

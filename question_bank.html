@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Bank | AISSA-EDU</title>
+    <meta name="description" content="Search and access previous year questions for BBA and MBA programs.">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app-container">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="workspace-switcher">
+                    <img src="assets/images/logo.png" alt="Logo" style="width: 24px; height: 24px; border-radius: 4px;">
+                    <span>AISSA-EDU</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="margin-left: auto; opacity: 0.5;">
+                        <path d="m6 9 6 6 6-6" />
+                    </svg>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-group">
+                    <div class="nav-item" data-link="index.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                            <polyline points="9 22 9 12 15 12 15 22" />
+                        </svg>
+                        <span>Home</span>
+                    </div>
+                    <div class="nav-item" data-link="course_materials.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                        </svg>
+                        <span>Materials</span>
+                    </div>
+                    <div class="nav-item active" data-link="question_bank.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                            <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                        <span>Archive</span>
+                    </div>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-group-title">Research & Insights</div>
+                    <div class="nav-item" data-link="publications.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                        </svg>
+                        <span>Publications</span>
+                    </div>
+                    <div class="nav-item" data-link="blog.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                        </svg>
+                        <span>Blog</span>
+                    </div>
+                    <div class="nav-item" data-link="podcast.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                            <line x1="12" y1="19" x2="12" y2="23"></line>
+                            <line x1="8" y1="23" x2="16" y2="23"></line>
+                        </svg>
+                        <span>Podcast</span>
+                    </div>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-group-title">Tools</div>
+                    <div class="nav-item" data-link="gpa_calculator.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                            <line x1="3" y1="9" x2="21" y2="9" />
+                            <line x1="9" y1="21" x2="9" y2="9" />
+                        </svg>
+                        <span>GPA Calculator</span>
+                    </div>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-group-title">General</div>
+                    <div class="nav-item" data-link="about.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="12" y1="16" x2="12" y2="12" />
+                            <line x1="12" y1="8" x2="12.01" y2="8" />
+                        </svg>
+                        <span>About</span>
+                    </div>
+                    <div class="nav-item" data-link="contact.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                        <span>Contact Us</span>
+                    </div>
+                    <div class="nav-item" id="settings-trigger">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3" />
+                            <path
+                                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                        </svg>
+                        <span>Settings</span>
+                    </div>
+            </nav>
+
+            <div class="sidebar-footer" style="padding: var(--space-4); border-top: 1px solid var(--border);">
+                <div class="nav-item" style="cursor: default; opacity: 0.5;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3" />
+                        <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z" />
+                    </svg>
+                    <span>v1.2.0</span>
+                </div>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <header class="top-bar">
+                <div class="top-bar-left">
+                    <button id="mobile-menu-toggle"
+                        style="display: none; background: none; border: none; color: var(--text-primary); cursor: pointer;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="3" y1="12" x2="21" y2="12" />
+                            <line x1="3" y1="6" x2="21" y2="6" />
+                            <line x1="3" y1="18" x2="21" y2="18" />
+                        </svg>
+                    </button>
+                    <div class="breadcrumb" id="breadcrumb">
+                        <span style="font-weight: 600; color: var(--text-primary);">AISSA-EDU</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            style="opacity: 0.5;">
+                            <path d="m9 18 6-6-6-6" />
+                        </svg>
+                        <span id="current-page-name">Archive</span>
+                    </div>
+                </div>
+                <div class="top-bar-right">
+                    <div class="search-trigger" id="cmd-k-trigger">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8" />
+                            <path d="m21 21-4.35-4.35" />
+                        </svg>
+                        <span>Search...</span>
+                        <kbd>Ctrl K</kbd>
+                    </div>
+                    <div class="user-profile"
+                        style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), #7c89eb); color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(94, 106, 210, 0.3);">
+                        TM
+                    </div>
+                </div>
+            </header>
+            <main class="content-area" id="main-content-target">
+                <div class="header-content">
+                    <div>
+                        <h1 style="font-size: 32px; font-weight: 700; margin-bottom: var(--space-4);">Question Bank</h1>
+                        <p style="color: var(--text-secondary); max-width: 600px;">Access past years' questions to
+                            prepare for your exams.</p>
+                    </div>
+                    <div class="header-image-container">
+                        <img src="assets/images/archive_geo.svg" alt="Archive" class="header-image">
+                    </div>
+                </div>
+                <div class="aissa-card" style="padding: 0; margin-bottom: var(--space-8);">
+                    <div style="padding: var(--space-8);">
+                        <div
+                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-6);">
+                            <div>
+                                <label
+                                    style="display: block; font-size: 12px; font-weight: 600; color: var(--text-tertiary); margin-bottom: var(--space-2); text-transform: uppercase;">Program</label>
+                                <select id="program-select" class="btn btn-secondary"
+                                    style="width: 100%; justify-content: flex-start;">
+                                    <option value="BBA">BBA</option>
+                                    <option value="MBA">MBA</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label
+                                    style="display: block; font-size: 12px; font-weight: 600; color: var(--text-tertiary); margin-bottom: var(--space-2); text-transform: uppercase;">Semester</label>
+                                <select id="semester-select" class="btn btn-secondary"
+                                    style="width: 100%; justify-content: flex-start;">
+                                    <option value="1st">1st Semester</option>
+                                    <option value="2nd">2nd Semester</option>
+                                    <option value="3rd">3rd Semester</option>
+                                    <option value="4th">4th Semester</option>
+                                    <option value="5th">5th Semester</option>
+                                    <option value="6th">6th Semester</option>
+                                    <option value="7th">7th Semester</option>
+                                    <option value="8th">8th Semester</option>
+                                </select>
+                            </div>
+                            <div style="display: flex; align-items: flex-end;">
+                                <button onclick="searchQuestions()" class="btn btn-primary" style="width: 100%;">Search
+                                    Questions</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="question-list" class="issue-list">
+                    <p style="text-align: center; padding: 3rem; color: var(--text-tertiary);">Select program and
+                        semester to view questions.</p>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Command Menu -->
+    <div class="modal-overlay" id="command-menu-overlay">
+        <div class="command-menu">
+            <div class="command-input-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    style="opacity: 0.5;">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.35-4.35" />
+                </svg>
+                <input type="text" class="command-input" id="command-input" placeholder="Search for anything..."
+                    autofocus>
+            </div>
+            <div class="command-list" id="command-list">
+                <!-- Dynamic commands -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        function getSemesterCourses(program, semesterLabel) {
+            const semNum = semesterLabel.replace(/\D/g, ''); // "1st" -> "1"
+            const data = CURRICULUM_DATA[program];
+            if (!data || !data.years) return [];
+
+            for (const yearKey in data.years) {
+                const semesters = data.years[yearKey].semesters;
+                if (semesters && semesters[semNum]) {
+                    return semesters[semNum]; // Return objects: { code, course_title, credit }
+                }
+            }
+            return [];
+        }
+
+        function searchQuestions() {
+            const program = document.getElementById('program-select').value;
+            const semester = document.getElementById('semester-select').value;
+            const list = document.getElementById('question-list');
+
+            if (program === 'MBA') {
+                list.innerHTML = `
+                    <div style="padding: var(--space-8); text-align: center; border: 1px dashed var(--border); border-radius: var(--radius-md);">
+                        <p style="color: var(--text-secondary); font-size: 16px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                            MBA curriculum updates are coming soon.
+                        </p>
+                    </div>`;
+                return;
+            }
+
+            list.innerHTML = '<p style="text-align: center; padding: 2rem;">Searching...</p>';
+
+            try {
+                const courses = getSemesterCourses(program, semester);
+
+                if (courses.length === 0) {
+                    list.innerHTML = '<p style="text-align: center; padding: 3rem; color: var(--text-tertiary);">No questions found for this selection.</p>';
+                    return;
+                }
+
+                list.innerHTML = courses.map(course => `
+                    <div class="issue-item" onclick="window.location.href='read_question.html?course_code=${encodeURIComponent(course.code)}&program=${program}&semester=${semester}'">
+                        <div class="issue-status" style="background: var(--accent);"></div>
+                        <div class="issue-title">${course.course_title}</div>
+                        <div class="issue-meta">
+                            <span class="tag">${program}</span>
+                            <span>${semester}</span>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (err) {
+                console.error(err);
+                list.innerHTML = '<p style="text-align: center; color: red; padding: 2rem;">Error loading questions.</p>';
+            }
+        }
+    </script>
+</body>
+
+</html>

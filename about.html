@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Tanvir Mahfuz | AISSA-EDU</title>
+    <meta name="description"
+        content="About Tanvir Mahfuz, Lead Developer of AISSA-EDU and Education & Research Secretary at AISSA.">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-8);
+            margin-bottom: var(--space-8);
+            flex-wrap: wrap;
+        }
+
+        .profile-image {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 20px rgba(94, 106, 210, 0.3);
+            flex-shrink: 0;
+        }
+
+        .profile-intro {
+            flex: 1;
+            font-size: 15px;
+            /* Slightly smaller base font */
+        }
+
+        .section-title {
+            font-size: 17px;
+            /* Slightly smaller headings */
+            font-weight: 600;
+            margin-bottom: var(--space-4);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .section-title svg {
+            color: var(--accent);
+        }
+
+        .role-list {
+            display: grid;
+            gap: var(--space-3);
+        }
+
+        .role-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: var(--space-4);
+            transition: all 0.2s;
+        }
+
+        .role-item:hover {
+            border-color: var(--accent);
+            background: rgba(94, 106, 210, 0.05);
+        }
+
+        .role-title {
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--text-primary);
+            margin-bottom: var(--space-1);
+        }
+
+        .role-org {
+            font-size: 13px;
+            color: var(--accent);
+            margin-bottom: var(--space-2);
+            font-weight: 500;
+        }
+
+        .role-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header"></header>
+
+    <main id="main-content">
+        <div class="view-header">
+            <h1 class="view-title">About Tanvir Mahfuz</h1>
+            <p class="view-description">Bridging accounting foundation with advanced data analysis.</p>
+        </div>
+
+        <!-- Profile Section -->
+        <div class="aissa-card">
+            <div class="profile-header">
+                <img src="assets/images/tanvir_mahfuz.jpg" alt="Tanvir Mahfuz" class="profile-image">
+                <div class="profile-intro">
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: var(--space-4);">
+                        Tanvir Mahfuz is a BBA student in Accounting & Information Systems at the University of
+                        Barishal. Passionate about determining the intersection of finance and technology, he works to
+                        combine traditional accounting principles with modern data analysis techniques.
+                    </p>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        With competency in <strong>Microsoft Excel, SQL, Python, and Power BI</strong>, he focuses on
+                        prototyping practical solutions that address real-world challenges for academic and professional
+                        communities.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leadership Section -->
+        <div class="aissa-card" style="margin-top: var(--space-6);">
+            <h2 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                    <circle cx="8.5" cy="7" r="4" />
+                    <line x1="20" y1="8" x2="20" y2="14" />
+                    <line x1="23" y1="11" x2="17" y2="11" />
+                </svg>
+                Community & Leadership
+            </h2>
+            <div class="role-list">
+                <div class="role-item">
+                    <div class="role-title">Education & Research Secretary</div>
+                    <div class="role-org">Accounting & Information Systems Students’ Association (AISSA)</div>
+                    <div class="role-desc">Contributing to the department by facilitating student learning opportunities
+                        and supporting research initiatives.</div>
+                </div>
+
+                <div class="role-item">
+                    <div class="role-title">Lead Developer</div>
+                    <div class="role-org">AISSA-EDU Website</div>
+                    <div class="role-desc">Developing diverse academic resources to ensure accessibility for all
+                        students.</div>
+                </div>
+
+                <div class="role-item">
+                    <div class="role-title">Co-founder</div>
+                    <div class="role-org">Dialogue Domain</div>
+                    <div class="role-desc">Organizing seminars and workshops to foster skill development and
+                        intellectual exchange.</div>
+                </div>
+
+                <div class="role-item">
+                    <div class="role-title">Office Secretary</div>
+                    <div class="role-org">Barishal University English Language Club (BUELC)</div>
+                    <div class="role-desc">Assisting in the coordination of events to help members improve their
+                        communication skills.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Approach & Mindset -->
+        <div class="aissa-card" style="margin-top: var(--space-6);">
+            <h2 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                    <line x1="12" y1="17" x2="12.01" y2="17" />
+                </svg>
+                Approach
+            </h2>
+            <p style="color: var(--text-secondary); line-height: 1.6; font-size: 15px;">
+                I value applied problem-solving and collaborative innovation. While formal education builds the
+                foundation, I believe in a proactive, hands-on approach to learning—constantly seeking ways to use
+                technology to create meaningful improvements in daily workflows.
+            </p>
+        </div>
+
+        <!-- Recognitions -->
+        <div class="aissa-card" style="margin-top: var(--space-6);">
+            <h2 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="8" r="7" />
+                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+                </svg>
+                Achievements
+            </h2>
+            <p style="color: var(--text-secondary); line-height: 1.6; font-size: 15px;">
+                Notable milestones include becoming a <strong>Certified Microsoft Excel Associate</strong> and securing
+                <strong>1st Place</strong> in the University Round at AIUB. Additionally, I was honored to achieve
+                <strong>National 4th Place</strong> in the Microsoft Office Specialist Championship 2025 (Bangladesh).
+            </p>
+        </div>
+
+    </main>
+
+    <footer id="footer"></footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
