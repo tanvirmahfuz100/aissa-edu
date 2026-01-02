@@ -1,4 +1,4 @@
-const CACHE_NAME = 'aissa-edu-v1.1';
+const CACHE_NAME = 'aissa-edu-v1.2.0';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
@@ -9,13 +9,31 @@ const ASSETS_TO_CACHE = [
     './blog.html',
     './podcast.html',
     './question_bank.html',
+    './404.html',
+    './download.html',
+    './files.html',
+    './gpa_calculator.html',
+    './post.html',
+    './read_publication.html',
+    './read_question.html',
+    './search_result.html',
     './css/style.css',
     './js/main.js',
     './js/data.js',
     './js/question_data.js',
     './json/podcasts.json',
     './json/resources.json',
-    './assets/images/logo.png'
+    './json/notices.json',
+    './json/featured.json',
+    './json/curriculum.json',
+    './json/publications.json',
+    './json/blog/blog_list.json',
+    './assets/images/logo.png',
+    './assets/images/archive_geo.svg',
+    './assets/images/blog_geo.svg',
+    './assets/images/materials_geo.svg',
+    './assets/images/tools_geo.svg',
+    './manifest.json'
 ];
 
 self.addEventListener('install', (event) => {
